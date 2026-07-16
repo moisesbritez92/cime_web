@@ -1,0 +1,380 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ site_name }} — {{ tagline }}</title>
+  <meta name="description" content="CIME, Consultoría Integral del Mercosur: firma de servicios profesionales con más de 25 años que integra asesoría legal, contable, tributaria, tercerización de personal y comercio exterior en Paraguay y Latinoamérica.">
+  <meta name="theme-color" content="#052e28">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="{{ site_name }} — {{ tagline }}">
+  <meta property="og:description" content="Servicios profesionales integrales para invertir y expandirse en Paraguay y Latinoamérica.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="{% static 'landing/img/exterior-1.jpg' %}">
+
+  <link rel="icon" type="image/png" href="{% static 'landing/img/logo-cime.png' %}">
+
+  <!-- Fonts (graceful fallback to system serif/sans if offline) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{% static 'landing/css/styles.css' %}">
+
+  <!-- Mark JS available before paint so scroll-reveal hidden state applies
+       only when JS can restore it (progressive enhancement). -->
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+<a class="skip-link" href="#servicios">Saltar al contenido</a>
+
+<!-- ===== SVG icon sprite ===== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-handshake" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M11 17l2 2a1.5 1.5 0 0 0 2.1 0l3.4-3.4a2 2 0 0 0 0-2.8L14 8"/><path d="M13 9l-2-2a1.5 1.5 0 0 0-2.1 0L5.5 10.4a2 2 0 0 0 0 2.8L7 15"/><path d="m8 12 2 2M15 8l3-3 3 3M9 16l-2 2M6 6 3 9"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-calculator" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h0M12 11h0M16 11h0M8 15h0M12 15h0M16 15v2M8 18h4"/></symbol>
+    <symbol id="i-scale" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M7 21h10M5 7h14M12 5 6 7l-2.5 6a3 3 0 0 0 5 0L6 7M18 7l-2.5 6a3 3 0 0 0 5 0L18 7"/></symbol>
+    <symbol id="i-coins" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="9" cy="7" rx="5" ry="2.5"/><path d="M4 7v5c0 1.4 2.2 2.5 5 2.5s5-1.1 5-2.5V7"/><path d="M14 11.5c.6.3 1.9.5 3 .5 2.8 0 5-1.1 5-2.5S19.8 7 17 7c-1 0-2 .1-2.7.4"/><path d="M20 12v4c0 1.4-2.2 2.5-5 2.5-1.2 0-2.3-.2-3-.5"/><path d="M4 12v4c0 1.4 2.2 2.5 5 2.5s5-1.1 5-2.5v-4"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0"/><path d="M16 5.2a3.2 3.2 0 0 1 0 6M17.5 14.2A5.5 5.5 0 0 1 20.5 19"/></symbol>
+    <symbol id="i-briefcase" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 12h18M12 12v2"/></symbol>
+    <symbol id="i-passport" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M9.5 16h5"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v16h16"/><path d="M8 16v-4M12 16V8M16 16v-6"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18"/></symbol>
+    <symbol id="i-puzzle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M10 4a1.6 1.6 0 0 1 3.2 0c0 .6-.2 1 .3 1.4.5.3 1 .1 1.5.1H17a1 1 0 0 1 1 1v2c0 .5-.2 1 .1 1.5.4.5.8.3 1.4.3a1.6 1.6 0 0 1 0 3.2c-.6 0-1-.2-1.4.3-.3.5-.1 1-.1 1.5V19a1 1 0 0 1-1 1h-2.5c-.5 0-1 .2-1.3-.3S14 18.6 14 18a1.6 1.6 0 0 0-3.2 0c0 .6.2 1-.3 1.4-.3.5-.8.3-1.3.3H7a1 1 0 0 1-1-1v-2.5c0-.5.2-1-.3-1.3S4.6 15 4 15a1.6 1.6 0 0 1 0-3.2"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 8l9 5 9-5-9-5z"/><path d="m3 13 9 5 9-5M3 18l9 5 9-5" opacity=".85"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.9L12 16.9 6.8 19.7l1-5.9-4.3-4.1 5.9-.9L12 3z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5c0-1 .8-2 2-2h1.5c.5 0 .9.3 1 .8l.8 3c.1.5-.1.9-.4 1.2L8 9c.9 1.9 2.1 3.1 4 4l1-.9c.3-.3.7-.5 1.2-.4l3 .8c.5.1.8.5.8 1V16c0 1.2-1 2-2 2A14 14 0 0 1 4 5z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+    <symbol id="i-whatsapp" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.5A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.9.9-2.8-.2-.3A8 8 0 1 1 12 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1s-.6.8-.8 1c-.1.1-.3.2-.5 0a6.5 6.5 0 0 1-3.2-2.8c-.2-.4.2-.4.6-1.2.1-.1 0-.3 0-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3c-.3.3-.9.9-.9 2.1s.9 2.5 1.1 2.6c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.2.7 3 .6.5 0 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1 0-.2-.2-.2-.4-.3z"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.5 7-11a7 7 0 0 0-14 0c0 5.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  </defs>
+</svg>
+
+<!-- ===== Header ===== -->
+<header class="site-header">
+  <div class="container nav">
+    <a href="#inicio" class="brand" aria-label="{{ site_name }} — inicio">
+      <img src="{% static 'landing/img/logo-cime.png' %}" alt="Logotipo de {{ site_name }}">
+      <span class="brand__text">
+        <span class="brand__name">{{ site_name }}</span>
+        <span class="brand__sub">Consultoría Integral del Mercosur</span>
+      </span>
+    </a>
+
+    <nav class="nav-links" aria-label="Principal">
+      <a href="#nosotros">Nosotros</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#experiencia">Experiencia</a>
+      <a href="#oficinas">Oficinas</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+
+    <div class="nav-cta">
+      <a href="#contacto" class="btn btn--gold">Solicitar asesoría</a>
+      <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+        <svg><use href="#i-menu"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ===== Hero ===== -->
+<section class="hero" id="inicio">
+  <div class="hero__bg">
+    <img src="{% static 'landing/img/exterior-1.jpg' %}" alt="Edificio corporativo de CIME">
+  </div>
+  <div class="container">
+    <div class="hero__inner">
+      <span class="eyebrow">Servicios profesionales · Paraguay</span>
+      <h1>Invierta y expándase en <em>Latinoamérica</em> con un solo aliado</h1>
+      <p class="hero__lead">
+        CIME integra asesoría legal, contable, tributaria, tercerización de personal
+        y comercio exterior para empresas, fondos de inversión e inversionistas que
+        buscan establecer operaciones exitosas en Paraguay y el mundo.
+      </p>
+      <div class="hero__actions">
+        <a href="#contacto" class="btn">Hablemos de su proyecto <svg><use href="#i-arrow"/></svg></a>
+        <a href="#servicios" class="btn btn--ghost">Ver servicios</a>
+      </div>
+
+      <div class="hero__stats">
+        {% for s in stats %}
+        <div class="stat">
+          <div class="stat__value">{{ s.value }}</div>
+          <div class="stat__label">{{ s.label }}</div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <div class="hero__scroll" aria-hidden="true">Desliza<span></span></div>
+</section>
+
+<!-- ===== About ===== -->
+<section class="section" id="nosotros">
+  <div class="container about-grid">
+    <div class="about-copy reveal">
+      <span class="eyebrow">Sobre nosotros</span>
+      <p class="lead">
+        Somos una firma de servicios profesionales que acompaña a quienes buscan
+        invertir y crecer en el mercado latinoamericano.
+      </p>
+      <p>
+        CIME integra asesoría legal, contable, tributaria, tercerización de personal
+        y reclutamiento, con soluciones adaptadas a cada tipo de negocio sin importar
+        su escala, bajo un enfoque flexible, innovador y alineado con estándares
+        internacionales.
+      </p>
+      <p>
+        A través de nuestra red de oficinas en Asunción, Coronel Oviedo y Ciudad del
+        Este, acompañamos a empresas, fondos de inversión e inversionistas interesados
+        en establecer sus operaciones de manera ágil en el mercado.
+      </p>
+      <ul class="about-points">
+        <li><svg><use href="#i-check"/></svg> Equipo multidisciplinario en auditoría, derecho, contabilidad y arquitectura.</li>
+        <li><svg><use href="#i-check"/></svg> Soluciones integrales, éticas y eficaces bajo estándares internacionales.</li>
+        <li><svg><use href="#i-check"/></svg> Presencia internacional y estrategias de negocio para su crecimiento.</li>
+      </ul>
+    </div>
+    <div class="about-media reveal">
+      <img src="{% static 'landing/img/gallery/interior-3.jpg' %}" alt="Oficinas de CIME">
+      <div class="about-badge">
+        <strong>25+</strong>
+        <span>años de trayectoria a nivel nacional e internacional</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Services ===== -->
+<section class="section section--tint" id="servicios">
+  <div class="container">
+    <div class="section-head section-head--center reveal">
+      <span class="eyebrow">Portafolio</span>
+      <h2>Servicios profesionales integrales</h2>
+      <p>Todo lo que su empresa necesita para establecer y consolidar operaciones exitosas, en un solo lugar.</p>
+    </div>
+    <div class="services-grid">
+      {% for service in services %}
+      <article class="service-card reveal" style="transition-delay: {{ forloop.counter0|add:forloop.counter0 }}0ms">
+        <div class="service-icon"><svg><use href="#i-{{ service.icon }}"/></svg></div>
+        <h3>{{ service.title }}</h3>
+        <p>{{ service.summary }}</p>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ===== Experience band ===== -->
+<section class="section section--ink exp" id="experiencia">
+  <div class="container exp__grid">
+    <div class="exp__copy reveal">
+      <span class="eyebrow">Nuestra experiencia</span>
+      <h2>Más de 25 años impulsando el crecimiento de nuestros clientes</h2>
+      <p>
+        Hemos acompañado a emprendedores, profesionales independientes, pymes y
+        organismos públicos y privados a nivel nacional e internacional, desarrollando
+        estrategias de negocio que apoyan su crecimiento en todo momento.
+      </p>
+      <p>
+        Somos una empresa líder en consultoría empresarial con presencia internacional,
+        combinando asesoría legal, fiscal, administrativa, de reclutamiento y contable
+        para avanzar con rapidez y seguridad.
+      </p>
+    </div>
+    <div class="exp__stats reveal">
+      <div class="exp__stat"><strong>+25</strong><span>Años de trayectoria</span></div>
+      <div class="exp__stat"><strong>3</strong><span>Ciudades principales del Paraguay</span></div>
+      <div class="exp__stat"><strong>10</strong><span>Áreas de servicio integradas</span></div>
+      <div class="exp__stat"><strong>NIIF</strong><span>y GAAP en nuestros procesos</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Reasons ===== -->
+<section class="section" id="razones">
+  <div class="container">
+    <div class="section-head section-head--center reveal">
+      <span class="eyebrow">Razones para elegirnos</span>
+      <h2>Un aliado estratégico, no solo un proveedor</h2>
+    </div>
+    <div class="reasons-grid">
+      {% for reason in reasons %}
+      <article class="reason reveal" style="transition-delay: {{ forloop.counter0 }}00ms">
+        <div class="reason__icon"><svg><use href="#i-{{ reason.icon }}"/></svg></div>
+        <h3>{{ reason.title }}</h3>
+        <p>{{ reason.text }}</p>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ===== Gallery ===== -->
+<section class="section section--tint" id="galeria">
+  <div class="container">
+    <div class="section-head section-head--center reveal">
+      <span class="eyebrow">Nuestras instalaciones</span>
+      <h2>Un espacio a la altura de su negocio</h2>
+      <p>Oficinas modernas diseñadas para recibir a clientes, inversionistas y aliados comerciales.</p>
+    </div>
+    <div class="gallery-grid reveal">
+      {% for file, caption in gallery %}
+      <figure class="gallery-item{% if forloop.first %} gallery-item--wide gallery-item--tall{% endif %}">
+        <img src="{% static 'landing/img/gallery/'|add:file %}" alt="{{ caption }}" loading="lazy">
+        <figcaption>{{ caption }}</figcaption>
+      </figure>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ===== Offices ===== -->
+<section class="section" id="oficinas">
+  <div class="container">
+    <div class="section-head section-head--center reveal">
+      <span class="eyebrow">Red de oficinas</span>
+      <h2>Presencia en las principales ciudades del Paraguay</h2>
+    </div>
+    <div class="offices-grid">
+      {% for office in offices %}
+      <article class="office reveal" style="transition-delay: {{ forloop.counter0 }}00ms">
+        <span class="office__pin"><svg><use href="#i-pin"/></svg></span>
+        <div>
+          <h3>{{ office.city }}</h3>
+          <p>{{ office.role }}</p>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ===== Contact ===== -->
+<section class="section section--tint" id="contacto">
+  <div class="container contact-grid">
+    <div class="contact-info reveal">
+      <span class="eyebrow">Contacto</span>
+      <h2>Conversemos sobre su expansión</h2>
+      <p>
+        Cuéntenos sobre su proyecto y un especialista lo contactará. Ofrecemos una
+        consulta inicial para identificar la mejor ruta para su negocio.
+      </p>
+      <ul class="contact-list">
+        <li>
+          <span class="ci"><svg><use href="#i-mail"/></svg></span>
+          <div><div class="cl-label">Correo</div><a class="cl-value" href="mailto:{{ contact_email }}">{{ contact_email }}</a></div>
+        </li>
+        <li>
+          <span class="ci"><svg><use href="#i-phone"/></svg></span>
+          <div><div class="cl-label">Teléfono</div><a class="cl-value" href="tel:{{ contact_phone }}">{{ contact_phone }}</a></div>
+        </li>
+        <li>
+          <span class="ci"><svg><use href="#i-whatsapp"/></svg></span>
+          <div><div class="cl-label">WhatsApp</div><a class="cl-value" href="https://wa.me/{{ contact_whatsapp }}" target="_blank" rel="noopener">Escríbanos ahora</a></div>
+        </li>
+        <li>
+          <span class="ci"><svg><use href="#i-pin"/></svg></span>
+          <div><div class="cl-label">Casa matriz</div><span class="cl-value">Asunción, Paraguay</span></div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="contact-card reveal">
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert--{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+      <form method="post" action="#contacto" novalidate>
+        {% csrf_token %}
+        <div class="form-row">
+          <div class="field">
+            <label for="{{ form.name.id_for_label }}">{{ form.name.label }}</label>
+            {{ form.name }}{{ form.name.errors }}
+          </div>
+          <div class="field">
+            <label for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
+            {{ form.email }}{{ form.email.errors }}
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="{{ form.company.id_for_label }}">{{ form.company.label }}</label>
+            {{ form.company }}{{ form.company.errors }}
+          </div>
+          <div class="field">
+            <label for="{{ form.phone.id_for_label }}">{{ form.phone.label }}</label>
+            {{ form.phone }}{{ form.phone.errors }}
+          </div>
+        </div>
+        <div class="field">
+          <label for="{{ form.message.id_for_label }}">{{ form.message.label }}</label>
+          {{ form.message }}{{ form.message.errors }}
+        </div>
+        {{ form.website }}
+        <button type="submit" class="btn">Enviar consulta <svg><use href="#i-arrow"/></svg></button>
+        <p class="form-note">Sus datos se tratan de forma confidencial y solo para responder su consulta.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="{% static 'landing/img/logo-cime.png' %}" alt="{{ site_name }}">
+        <p>Consultoría Integral del Mercosur. Servicios profesionales para invertir y expandirse en Paraguay y Latinoamérica.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Servicios</h4>
+        <ul>
+          <li><a href="#servicios">Asesoría legal</a></li>
+          <li><a href="#servicios">Contabilidad y auditoría</a></li>
+          <li><a href="#servicios">PEO y EOR</a></li>
+          <li><a href="#servicios">Comercio exterior</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Empresa</h4>
+        <ul>
+          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#experiencia">Experiencia</a></li>
+          <li><a href="#oficinas">Oficinas</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="mailto:{{ contact_email }}">{{ contact_email }}</a></li>
+          <li><a href="tel:{{ contact_phone }}">{{ contact_phone }}</a></li>
+          <li>Asunción · Coronel Oviedo · Ciudad del Este</li>
+          <li><a href="https://www.cime.com.py" target="_blank" rel="noopener">www.cime.com.py</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span id="year">2026</span> {{ site_name }} — Consultoría Integral del Mercosur. Todos los derechos reservados.</span>
+      <span>Paraguay · Latinoamérica</span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/{{ contact_whatsapp }}" target="_blank" rel="noopener" aria-label="Escríbanos por WhatsApp">
+  <svg><use href="#i-whatsapp"/></svg>
+</a>
+
+<script src="{% static 'landing/js/main.js' %}"></script>
+</body>
+</html>
